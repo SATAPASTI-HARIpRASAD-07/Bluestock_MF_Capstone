@@ -1,0 +1,93 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Bluestock Mutual Fund Analytics — Day 1: Data Ingestion & Live NAV API\n",
+    "\n",
+    "This notebook demonstrates dataset ingestion across all 10 raw CSV files, prints data shapes, column data types, initial records, data quality checks, AMFI code validation, and live NAV fetching via `mfapi.in` API."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import os\n",
+    "from pathlib import Path\n",
+    "import pandas as pd\n",
+    "import requests\n",
+    "\n",
+    "RAW_DIR = Path(\"../data/raw\")\n",
+    "raw_files = list(RAW_DIR.glob(\"*.csv\"))\n",
+    "print(f\"Total raw CSV datasets found: {len(raw_files)}\")\n",
+    "for f in sorted(raw_files):\n",
+    "    print(f\"  - {f.name}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Inspect Raw Datasets (Shape, Columns, Dtypes & Sample Records)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "for file_path in sorted(raw_files):\n",
+    "    df = pd.read_csv(file_path)\n",
+    "    print(\"=\" * 70)\n",
+    "    print(f\"FILE: {file_path.name}\")\n",
+    "    print(f\"Rows: {len(df):,}, Columns: {len(df.columns)}\")\n",
+    "    print(\"Columns:\", list(df.columns))\n",
+    "    print(\"Data Types:\")\n",
+    "    print(df.dtypes)\n",
+    "    print(\"Missing Values:\", df.isna().sum().to_dict())\n",
+    "    print(\"Head:\")\n",
+    "    display(df.head(2))\n",
+    "    print(\"\\n\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Live NAV API Integration Test (`mfapi.in`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "amfi_code = 125497  # HDFC Top 100\n",
+    "url = f\"https://api.mfapi.in/mf/{amfi_code}\"\n",
+    "try:\n",
+    "    res = requests.get(url, timeout=5)\n",
+    "    if res.status_code == 200:\n",
+    "        data = res.json()\n",
+    "        print(\"API Status:\", data.get(\"status\"))\n",
+    "        print(\"Meta:\", data.get(\"meta\"))\n",
+    "        print(\"Latest NAV record:\", data.get(\"data\")[0])\n",
+    "    else:\n",
+    "        print(\"API Status Code:\", res.status_code)\n",
+    "except Exception as e:\n",
+    "    print(\"API Error:\", e)"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

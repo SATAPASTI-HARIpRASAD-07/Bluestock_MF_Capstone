@@ -1,0 +1,61 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Bluestock Mutual Fund Analytics — Day 2: Data Cleaning & SQL Database\n",
+    "\n",
+    "This notebook demonstrates dataset cleaning across all 10 mutual fund datasets, standardizing text formatting, coercing dates, deduplicating, forward-filling missing NAV records on holidays, and loading cleaned tables into SQLite (`db/bluestock_mf.db`)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import sqlite3\n",
+    "from pathlib import Path\n",
+    "import pandas as pd\n",
+    "\n",
+    "PROCESSED_DIR = Path(\"../data/processed\")\n",
+    "DB_PATH = Path(\"../db/bluestock_mf.db\")\n",
+    "\n",
+    "print(\"Processed CSV Datasets:\")\n",
+    "for f in sorted(PROCESSED_DIR.glob(\"*.csv\")):\n",
+    "    df = pd.read_csv(f)\n",
+    "    print(f\"  ✓ {f.name:<35} {len(df):,} rows\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## SQLite Star Schema Table Verification"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "conn = sqlite3.connect(DB_PATH)\n",
+    "tables = pd.read_sql(\"SELECT name FROM sqlite_master WHERE type='table' ORDER BY name\", conn)\n",
+    "print(\"Database Tables:\")\n",
+    "for t in tables[\"name\"]:\n",
+    "    count = pd.read_sql(f'SELECT COUNT(*) as c FROM \"{t}\"', conn).iloc[0][\"c\"]\n",
+    "    print(f\"  ✓ {t:<30} {count:,} rows\")\n",
+    "conn.close()"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

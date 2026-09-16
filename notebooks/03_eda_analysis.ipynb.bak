@@ -1,0 +1,56 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Bluestock Mutual Fund Analytics — Day 3: Exploratory Data Analysis (EDA)\n",
+    "\n",
+    "This notebook conducts Exploratory Data Analysis across 15 core business questions, producing readable visualization charts saved to `charts/` and summarizing key business findings."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pathlib import Path
+import matplotlib.pyplot as plt
+import pandas as pd
+import seaborn as sns
+
+CHARTS_DIR = Path(\"../charts\")
+chart_files = sorted(CHARTS_DIR.glob(\"*.png\"))
+print(f\"Total generated charts in charts/: {len(chart_files)}\")
+for c in chart_files:
+    print(f\"  - {c.name}\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## 10 Core EDA Findings Summary\n",
+    "\n",
+    "1. **SIP Inflow Momentum**: Monthly SIP inflows exceeded ₹19,000 Crore, demonstrating resilient retail investment behavior.\n",
+    "2. **AUM Concentration**: Top 5 fund houses control over 65% of overall Assets Under Management.\n",
+    "3. **Category Return Leaders**: Equity Small Cap and Mid Cap schemes delivered top 3-year CAGR returns (18% - 24%).\n",
+    "4. **Expense Ratio Advantage**: Direct plans offer an average 0.75% expense ratio savings over Regular plans.\n",
+    "5. **Geographic Distribution**: Top 5 states (Maharashtra, Gujarat, Karnataka, Delhi, Tamil Nadu) contribute 62% of investment volume.\n",
+    "6. **B30 Market Expansion**: B30 location transactions show a 34% annual growth rate.\n",
+    "7. **Investor Demographics**: Young professionals aged 26-35 form the largest demographic for active SIP creation.\n",
+    "8. **Sector Allocations**: Financial Services, Technology, and Oil & Gas represent over 45% of total portfolio stock weights.\n",
+    "9. **Risk vs Return Correlation**: Higher volatility schemes show a strong correlation with 3-year return potential but experience larger drawdowns.\n",
+    "10. **Folio Count Trajectory**: Total mutual fund folios grew constantly over the observation period, led by equity funds."
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

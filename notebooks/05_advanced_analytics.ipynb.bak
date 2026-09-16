@@ -1,0 +1,41 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Bluestock Mutual Fund Analytics — Day 6: Advanced Analytics & Recommendation Model\n",
+    "\n",
+    "This notebook performs advanced quantitative risk & investor analysis:\n",
+    "- **Historical 95% VaR & CVaR** (`outputs/var_cvar_report.csv`)\n",
+    "- **90-Day Rolling Sharpe Ratio Trajectory** (`charts/rolling_sharpe_chart.png`)\n",
+    "- **Investor Cohort Analysis** (`outputs/cohort_analysis.csv`)\n",
+    "- **SIP Continuity & At-Risk Gap Analysis** (`outputs/sip_continuity.csv`)\n",
+    "- **Sector Concentration HHI Index** (`outputs/sector_hhi.csv`)\n",
+    "- **Transparent Rule-Based Fund Recommendation Engine** (`scripts/recommender.py`)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pathlib import Path\n",
+    "import pandas as pd\n",
+    "\n",
+    "OUTPUT_DIR = Path(\"../outputs\")\n",
+    "for f in sorted(OUTPUT_DIR.glob(\"*.csv\")):\n",
+    "    df = pd.read_csv(f)\n",
+    "    print(f\"  ✓ {f.name:<30} {len(df):,} rows\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

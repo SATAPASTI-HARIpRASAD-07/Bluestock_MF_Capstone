@@ -1,0 +1,41 @@
+scheme_name,category,fund_house,benchmark_3yr_pct,return_3yr_pct,alpha,beta,sharpe_ratio,std_dev_ann_pct,excess_return_pct
+SBI Bluechip Fund - Regular Plan - Growth,Large Cap,SBI Mutual Fund,11.49,12.36,0.87,0.89,1.21,13.74,0.87
+SBI Bluechip Fund - Direct Plan - Growth,Large Cap,SBI Mutual Fund,9.52,11.3,1.78,0.87,0.95,13.94,1.78
+SBI Small Cap Fund - Regular Plan - Growth,Small Cap,SBI Mutual Fund,22.16,23.39,1.23,0.89,0.95,25.14,1.23
+SBI Small Cap Fund - Direct Plan - Growth,Small Cap,SBI Mutual Fund,22.01,23.14,1.13,1.04,-0.06,24.95,1.13
+SBI Magnum Gilt Fund - Regular Plan - Growth,Gilt,SBI Mutual Fund,4.47,6.07,1.6,0.22,-0.23,3.97,1.6
+HDFC Top 100 Fund - Regular Plan - Growth,Large Cap,HDFC Mutual Fund,14.06,14.84,0.78,0.97,-0.2,14.55,0.78
+HDFC Top 100 Fund - Direct Plan - Growth,Large Cap,HDFC Mutual Fund,12.25,13.38,1.13,0.97,0.78,14.67,1.13
+HDFC Mid-Cap Opportunities Fund - Regular - Growth,Mid Cap,HDFC Mutual Fund,15.63,16.58,0.95,0.91,1.09,18.94,0.95
+HDFC Mid-Cap Opportunities Fund - Direct - Growth,Mid Cap,HDFC Mutual Fund,14.39,15.29,0.9,1.04,0.3,18.35,0.9
+HDFC Short Term Debt Fund - Regular - Growth,Short Duration,HDFC Mutual Fund,5.39,7.37,1.98,0.44,-0.57,3.91,1.98
+ICICI Pru Bluechip Fund - Regular - Growth,Large Cap,ICICI Prudential MF,10.88,11.54,0.66,0.96,0.8,13.88,0.66
+ICICI Pru Bluechip Fund - Direct - Growth,Large Cap,ICICI Prudential MF,13.53,14.41,0.88,1.03,1.03,14.36,0.88
+ICICI Pru Midcap Fund - Regular - Growth,Mid Cap,ICICI Prudential MF,17.19,18.08,0.89,1.0,1.18,19.29,0.89
+ICICI Pru Value Discovery Fund - Regular - Growth,Value,ICICI Prudential MF,14.21,14.76,0.55,0.92,0.65,15.23,0.55
+ICICI Pru Liquid Fund - Regular - Growth,Liquid,ICICI Prudential MF,5.83,7.68,1.85,0.26,0.5,0.49,1.85
+Nippon India Large Cap Fund - Regular - Growth,Large Cap,Nippon India MF,13.14,14.0,0.86,0.88,1.08,14.15,0.86
+Nippon India Large Cap Fund - Direct - Growth,Large Cap,Nippon India MF,10.63,12.33,1.7,1.02,0.65,14.0,1.7
+Nippon India Small Cap Fund - Regular - Growth,Small Cap,Nippon India MF,19.35,20.15,0.8,1.03,0.45,25.24,0.8
+Nippon India ETF Nifty 50 BeES,Index/ETF,Nippon India MF,9.97,11.77,1.8,1.04,0.66,12.98,1.8
+Nippon India Gilt Securities Fund - Regular - Growth,Gilt,Nippon India MF,4.42,5.31,0.89,0.37,-0.36,3.99,0.89
+Kotak Bluechip Fund - Regular - Growth,Large Cap,Kotak Mahindra MF,10.98,12.25,1.27,0.93,0.49,13.46,1.27
+Kotak Emerging Equity Fund - Regular - Growth,Mid Cap,Kotak Mahindra MF,16.32,18.23,1.91,1.0,0.08,17.89,1.91
+Kotak Flexicap Fund - Regular - Growth,Flexi Cap,Kotak Mahindra MF,13.8,15.65,1.85,0.95,1.31,15.89,1.85
+Kotak Liquid Fund - Regular - Growth,Liquid,Kotak Mahindra MF,4.66,6.18,1.52,0.47,-0.09,0.51,1.52
+Axis Bluechip Fund - Regular - Growth,Large Cap,Axis Mutual Fund,10.43,11.84,1.41,0.91,0.03,13.95,1.41
+Axis Bluechip Fund - Direct - Growth,Large Cap,Axis Mutual Fund,10.71,12.14,1.43,0.87,0.13,13.98,1.43
+Axis Midcap Fund - Regular - Growth,Mid Cap,Axis Mutual Fund,13.76,15.18,1.42,1.0,1.0,19.41,1.42
+Axis Small Cap Fund - Regular - Growth,Small Cap,Axis Mutual Fund,20.47,20.98,0.51,1.0,-0.08,25.07,0.51
+ABSL Frontline Equity Fund - Regular - Growth,Large Cap,Aditya Birla Sun Life MF,12.44,13.78,1.34,1.03,1.03,14.57,1.34
+ABSL Small Cap Fund - Regular - Growth,Small Cap,Aditya Birla Sun Life MF,20.54,22.38,1.84,0.97,0.16,25.8,1.84
+ABSL Liquid Fund - Regular - Growth,Liquid,Aditya Birla Sun Life MF,3.96,5.14,1.18,0.43,-0.82,0.51,1.18
+UTI Nifty 50 Index Fund - Regular - Growth,Index,UTI Mutual Fund,11.17,12.1,0.93,0.9,0.82,12.84,0.93
+UTI Mid Cap Fund - Regular - Growth,Mid Cap,UTI Mutual Fund,14.49,15.61,1.12,0.92,-0.21,18.13,1.12
+UTI Flexi Cap Fund - Regular - Growth,Flexi Cap,UTI Mutual Fund,13.55,15.34,1.79,1.0,0.62,15.76,1.79
+Mirae Asset Large Cap Fund - Regular - Growth,Large Cap,Mirae Asset MF,13.19,14.81,1.62,0.96,1.45,14.19,1.62
+Mirae Asset Emerging Bluechip Fund - Regular - Growth,Large & Mid Cap,Mirae Asset MF,12.86,14.56,1.7,0.99,0.93,15.43,1.7
+Mirae Asset Tax Saver Fund - Regular - Growth,ELSS,Mirae Asset MF,13.04,13.58,0.54,0.98,1.23,17.67,0.54
+DSP Top 100 Equity Fund - Regular - Growth,Large Cap,DSP Mutual Fund,11.0,12.82,1.82,0.91,0.46,14.35,1.82
+DSP Midcap Fund - Regular - Growth,Mid Cap,DSP Mutual Fund,16.14,17.16,1.02,0.98,1.13,17.75,1.02
+DSP Small Cap Fund - Regular - Growth,Small Cap,DSP Mutual Fund,19.39,20.08,0.69,0.98,0.95,24.84,0.69

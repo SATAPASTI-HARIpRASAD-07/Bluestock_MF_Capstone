@@ -1,0 +1,39 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Bluestock Mutual Fund Analytics — Day 4: Performance Analytics & Fund Scorecard\n",
+    "\n",
+    "This notebook analyzes scheme performance metrics, risk-adjusted ratios (Sharpe, Sortino), volatility, maximum drawdowns, benchmark comparisons (Alpha & Beta), and builds the composite Fund Scorecard (0-100 ranking)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from pathlib import Path\n",
+    "import pandas as pd\n",
+    "\n",
+    "OUTPUT_DIR = Path(\"../outputs\")\n",
+    "scorecard_path = OUTPUT_DIR / \"fund_scorecard.csv\"\n",
+    "if scorecard_path.exists():\n",
+    "    df_sc = pd.read_csv(scorecard_path)\n",
+    "    print(\"Top 10 Ranked Mutual Fund Schemes:\")\n",
+    "    display(df_sc.head(10))\n",
+    "else:\n",
+    "    print(\"Scorecard file not found. Run scripts/compute_metrics.py first.\")"
+   ]
+  }
+ ],
+ "metadata": {
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2
+}

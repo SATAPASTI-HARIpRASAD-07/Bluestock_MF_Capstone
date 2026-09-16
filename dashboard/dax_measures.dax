@@ -1,0 +1,164 @@
+// ============================================================
+// BLUESTOCK FINTECH MUTUAL FUND ANALYTICS
+// POWER BI PRODUCTION DAX MEASURES COLLECTION
+// ============================================================
+
+// ------------------------------------------------------------
+// PAGE 1: INDUSTRY OVERVIEW MEASURES
+// ------------------------------------------------------------
+
+Total AUM Cr = 
+VAR LatestDate = MAX(fact_aum[date])
+RETURN
+    CALCULATE(
+        SUM(fact_aum[aum_crore]),
+        fact_aum[date] = LatestDate
+    )
+
+Latest Monthly SIP Inflow Cr = 
+VAR LatestMonth = MAX(fact_sip_industry[month])
+RETURN
+    CALCULATE(
+        SUM(fact_sip_industry[sip_inflow_crore]),
+        fact_sip_industry[month] = LatestMonth
+    )
+
+Total Folio Count Cr = 
+VAR LatestMonth = MAX(fact_industry_folio[month])
+RETURN
+    CALCULATE(
+        SUM(fact_industry_folio[total_folios_crore]),
+        fact_industry_folio[month] = LatestMonth
+    )
+
+Active Schemes Count = 
+DISTINCTCOUNT(dim_fund[amfi_code])
+
+Avg SIP YoY Growth % = 
+AVERAGE(fact_sip_industry[yoy_growth_pct])
+
+Industry AUM Trajectory Cr = 
+SUM(fact_aum[aum_crore])
+
+
+// ------------------------------------------------------------
+// PAGE 2: FUND PERFORMANCE MEASURES
+// ------------------------------------------------------------
+
+Avg 3Yr CAGR Return % = 
+AVERAGE(fact_performance[return_3yr_pct])
+
+Avg 1Yr Return % = 
+AVERAGE(fact_performance[return_1yr_pct])
+
+Avg 5Yr CAGR Return % = 
+AVERAGE(fact_performance[return_5yr_pct])
+
+Avg Sharpe Ratio = 
+AVERAGE(fact_performance[sharpe_ratio])
+
+Avg Sortino Ratio = 
+AVERAGE(fact_performance[sortino_ratio])
+
+Avg Alpha = 
+AVERAGE(fact_performance[alpha])
+
+Avg Beta = 
+AVERAGE(fact_performance[beta])
+
+Avg Expense Ratio % = 
+AVERAGE(fact_performance[expense_ratio_pct])
+
+Avg Max Drawdown % = 
+AVERAGE(fact_performance[max_drawdown_pct])
+
+Benchmark 3Yr Return % = 
+AVERAGE(fact_performance[benchmark_3yr_pct])
+
+Excess Return % = 
+[Avg 3Yr CAGR Return %] - [Benchmark 3Yr Return %]
+
+Selected Fund NAV = 
+AVERAGE(fact_nav[nav])
+
+Composite Fund Rank = 
+MIN(fact_performance[rank])
+
+
+// ------------------------------------------------------------
+// PAGE 3: INVESTOR ANALYTICS MEASURES
+// ------------------------------------------------------------
+
+Total Investor Transactions = 
+COUNTROWS(fact_transactions)
+
+Total Investment Volume INR = 
+SUM(fact_transactions[amount_inr])
+
+Total Investment Volume Cr = 
+DIVIDE([Total Investment Volume INR], 10000000)
+
+Avg Transaction Amount INR = 
+AVERAGE(fact_transactions[amount_inr])
+
+SIP Volume Cr = 
+CALCULATE(
+    [Total Investment Volume Cr],
+    fact_transactions[transaction_type] = "SIP"
+)
+
+Lumpsum Volume Cr = 
+CALCULATE(
+    [Total Investment Volume Cr],
+    fact_transactions[transaction_type] = "Lumpsum"
+)
+
+Redemption Volume Cr = 
+CALCULATE(
+    [Total Investment Volume Cr],
+    fact_transactions[transaction_type] = "Redemption"
+)
+
+SIP Transaction Count = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[transaction_type] = "SIP"
+)
+
+Lumpsum Transaction Count = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[transaction_type] = "Lumpsum"
+)
+
+Redemption Transaction Count = 
+CALCULATE(
+    COUNTROWS(fact_transactions),
+    fact_transactions[transaction_type] = "Redemption"
+)
+
+
+// ------------------------------------------------------------
+// PAGE 4: SIP & MARKET TRENDS MEASURES
+// ------------------------------------------------------------
+
+Active SIP Accounts Cr = 
+MAX(fact_sip_industry[active_sip_accounts_crore])
+
+New SIP Accounts Lakh = 
+MAX(fact_sip_industry[new_sip_accounts_lakh])
+
+Nifty 50 Close Value = 
+CALCULATE(
+    AVERAGE(fact_benchmark[close_value]),
+    fact_benchmark[index_name] = "NIFTY50"
+)
+
+Nifty 100 Close Value = 
+CALCULATE(
+    AVERAGE(fact_benchmark[close_value]),
+    fact_benchmark[index_name] = "NIFTY100"
+)
+
+Total Category Net Inflow Cr = 
+SUM(fact_category_inflows[net_inflow_crore])
