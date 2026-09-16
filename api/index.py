@@ -16,11 +16,14 @@ PROCESSED_DIR = BASE_DIR / "data" / "processed"
 OUTPUT_DIR = BASE_DIR / "outputs"
 
 def query_db(query, params=(), one=False):
-    """Execute SQLite query using built-in sqlite3 module."""
+    """Execute SQLite query safely in read-only mode using built-in sqlite3 module."""
     if not DB_PATH.exists():
         return []
     try:
-        conn = sqlite3.connect(DB_PATH)
+        try:
+            conn = sqlite3.connect(f"file:{DB_PATH.as_posix()}?mode=ro", uri=True)
+        except Exception:
+            conn = sqlite3.connect(DB_PATH)
         conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         cur.execute(query, params)
@@ -45,6 +48,7 @@ def read_csv_file(file_path):
         return []
 
 @app.route("/api/health")
+@app.route("/health")
 def health():
     return jsonify({
         "status": "ok",
@@ -54,6 +58,7 @@ def health():
     })
 
 @app.route("/api/summary")
+@app.route("/summary")
 def summary_api():
     sip_data = query_db("SELECT * FROM monthly_sip_inflows ORDER BY month DESC LIMIT 1", one=True)
     if not sip_data:
@@ -71,14 +76,15 @@ def summary_api():
     return jsonify({
         "total_industry_aum_lakh_cr": 81.0,
         "top10_amc_aum_lakh_cr": 62.74,
-        "latest_monthly_sip_inflow_cr": float(sip_data.get("sip_inflow_crore", 31002)),
-        "sip_yoy_growth_pct": float(sip_data.get("yoy_growth_pct", 17.17)),
-        "total_folio_count_cr": float(folio_data.get("total_folios_crore", 26.12)),
+        "latest_monthly_sip_inflow_cr": float(sip_data.get("sip_inflow_crore", 31002) or 31002),
+        "sip_yoy_growth_pct": float(sip_data.get("yoy_growth_pct", 17.17) or 17.17),
+        "total_folio_count_cr": float(folio_data.get("total_folios_crore", 26.12) or 26.12),
         "industry_schemes_count": 1908,
         "schemes_analyzed_count": schemes_cnt
     })
 
 @app.route("/api/funds")
+@app.route("/funds")
 def funds_api():
     scorecard = read_csv_file(OUTPUT_DIR / "fund_scorecard.csv")
     if not scorecard:
@@ -88,6 +94,7 @@ def funds_api():
     return jsonify(scorecard)
 
 @app.route("/api/recommend")
+@app.route("/recommend")
 def recommend_api():
     risk = request.args.get("risk", "Moderate").strip().title()
     funds = query_db("SELECT * FROM scheme_performance")
@@ -97,7 +104,6 @@ def recommend_api():
     if not funds:
         return jsonify([])
 
-    # Convert numeric fields safely
     for f in funds:
         try:
             f["sharpe_ratio"] = float(f.get("sharpe_ratio", 0) or 0)
@@ -448,6 +454,12 @@ HTML_TEMPLATE = """
 """
 
 @app.route("/")
+@app.route("/api")
+@app.route("/api/")
+@app.route("/api/index")
+@app.route("/api/index.py")
+@app.route("/index")
+@app.route("/index.html")
 def index():
     scorecard = read_csv_file(OUTPUT_DIR / "fund_scorecard.csv")
     if not scorecard:
@@ -547,6 +559,13 @@ def index():
         cat_names=json.dumps(cat_names),
         cat_inflows=json.dumps(cat_inflows)
     )
+
+@app.errorhandler(404)
+def handle_404(e):
+    path = request.path
+    if path.startswith("/api/"):
+        return jsonify({"error": "Not Found", "status": 404}), 404
+    return index()
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
