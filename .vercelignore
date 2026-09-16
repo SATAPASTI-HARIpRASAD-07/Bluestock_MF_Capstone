@@ -1,0 +1,22 @@
+# Exclude large development, virtual environment, and academic artifact files from Vercel deployment bundle
+.venv/
+venv/
+env/
+.pytest_cache/
+.git/
+.vscode/
+
+# Large project directories not needed at Vercel runtime
+notebooks/
+reports/
+charts/
+visualizations/
+tests/
+logs/
+data/raw/
+
+# Heavy local artifacts
+dashboard/bluestock_mf.pbix
+requirements-local.txt
+*.log
+*.tmp

@@ -1,0 +1,14 @@
+flask
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+sqlalchemy
+scipy
+streamlit
+openpyxl
+reportlab
+python-pptx
+pytest
+requests
