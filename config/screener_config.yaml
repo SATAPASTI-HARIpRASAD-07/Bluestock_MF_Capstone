@@ -1,0 +1,41 @@
+# Investment Screener Preset Configurations
+
+presets:
+  quality:
+    name: "Quality Champions"
+    description: "High ROE, low leverage, positive free cash flow"
+    rules:
+      min_roe: 15.0
+      max_debt_to_equity: 1.0
+      min_free_cash_flow: 0.0
+
+  value:
+    name: "Value Opportunities"
+    description: "Low P/E and P/B valuation multiples"
+    rules:
+      max_pe: 20.0
+      max_pb: 3.0
+
+  growth:
+    name: "High Growth Engine"
+    description: "Strong multi-year profit compounding"
+    rules:
+      min_pat_cagr_3y: 20.0
+
+  dividend:
+    name: "Dividend Yielders"
+    description: "Attractive dividend yield payouts"
+    rules:
+      min_dividend_yield: 2.0
+
+  momentum:
+    name: "Revenue Expansion"
+    description: "High revenue growth compounding"
+    rules:
+      min_revenue_cagr_3y: 15.0
+
+  debt_free:
+    name: "Fortress Balance Sheets"
+    description: "Zero total borrowing debt entities"
+    rules:
+      max_total_debt: 0.0

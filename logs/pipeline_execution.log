@@ -1,0 +1,116 @@
+2026-09-05 19:49:00,051 [INFO] ======================================================================
+2026-09-05 19:49:00,051 [INFO] BLUESTOCK MUTUAL FUND ANALYTICS — MASTER PIPELINE EXECUTION
+2026-09-05 19:49:00,051 [INFO] ======================================================================
+2026-09-05 19:49:00,051 [INFO] [STEP 1/9] Validating project directories...
+2026-09-05 19:49:00,052 [INFO]   ✓ Verified directory: data/raw
+2026-09-05 19:49:00,154 [INFO]   ✓ Verified directory: data/processed
+2026-09-05 19:49:00,160 [INFO]   ✓ Verified directory: db
+2026-09-05 19:49:00,163 [INFO]   ✓ Verified directory: notebooks
+2026-09-05 19:49:00,167 [INFO]   ✓ Verified directory: scripts
+2026-09-05 19:49:00,168 [INFO]   ✓ Verified directory: sql
+2026-09-05 19:49:00,170 [INFO]   ✓ Verified directory: dashboard
+2026-09-05 19:49:00,173 [INFO]   ✓ Verified directory: reports
+2026-09-05 19:49:00,175 [INFO]   ✓ Verified directory: charts
+2026-09-05 19:49:00,177 [INFO]   ✓ Verified directory: outputs
+2026-09-05 19:49:00,179 [INFO]   ✓ Verified directory: logs
+2026-09-05 19:49:00,183 [INFO]   ✓ Verified directory: tests
+2026-09-05 19:49:00,186 [INFO] 
+[STEP 2/9] Executing Live NAV API Ingestion (scripts/live_nav_fetch.py)...
+2026-09-05 19:49:04,665 [INFO]   ✓ Live NAV Fetch completed. Processed 5 schemes.
+2026-09-05 19:49:04,667 [INFO] 
+[STEP 3/9] Executing Master ETL & Star Schema Database Loading (scripts/etl_pipeline.py)...
+2026-09-05 19:49:07,535 [INFO]   ✓ ETL Pipeline & Database loading complete.
+2026-09-05 19:49:07,537 [INFO] 
+[STEP 4/9] Calculating Performance Metrics, Ratios & Fund Scorecard (scripts/compute_metrics.py)...
+2026-09-05 19:49:07,894 [INFO]   ✓ Performance metrics & Fund Scorecard generated.
+2026-09-05 19:49:07,896 [INFO] 
+[STEP 5/9] Executing Advanced Analytics (VaR, CVaR, Cohort, SIP Continuity, HHI) (scripts/advanced_analytics.py)...
+2026-09-05 19:49:09,343 [INFO]   ✓ Advanced Analytics reports generated.
+2026-09-05 19:49:09,344 [INFO] 
+[STEP 6/9] Testing Transparent Recommendation Model (scripts/recommender.py)...
+2026-09-05 19:49:09,376 [INFO]   ✓ Recommender model operational. Top match: HDFC Top 100 Fund - Regular Plan - Growth
+2026-09-05 19:49:09,377 [INFO] 
+[STEP 7/9] Generating 15+ EDA, Performance & Risk Charts (scripts/generate_charts.py)...
+2026-09-05 19:49:39,419 [INFO]   ✓ All 16 visualization charts generated into charts/
+2026-09-05 19:49:39,421 [INFO] 
+[STEP 8/9] Generating PDF Final Report & PowerPoint Deck (scripts/generate_report.py & generate_presentation.py)...
+2026-09-05 19:49:40,444 [INFO]   ✓ 24-section Final Report PDF generated at reports/Final_Report.pdf
+2026-09-05 19:49:41,096 [INFO]   ✓ 12-slide Presentation PPTX generated at reports/Bluestock_MF_Presentation.pptx
+2026-09-05 19:49:41,098 [INFO] 
+[STEP 9/9] Executing Final Deliverables Validation...
+2026-09-05 19:49:41,098 [INFO]   [VALIDATED] data\processed\01_fund_master.csv
+2026-09-05 19:49:41,099 [INFO]   [VALIDATED] db\bluestock_mf.db
+2026-09-05 19:49:41,099 [INFO]   [VALIDATED] sql\schema.sql
+2026-09-05 19:49:41,100 [INFO]   [VALIDATED] sql\queries.sql
+2026-09-05 19:49:41,100 [INFO]   [VALIDATED] outputs\fund_scorecard.csv
+2026-09-05 19:49:41,101 [INFO]   [VALIDATED] outputs\alpha_beta.csv
+2026-09-05 19:49:41,101 [INFO]   [VALIDATED] outputs\var_cvar_report.csv
+2026-09-05 19:49:41,101 [INFO]   [VALIDATED] outputs\cohort_analysis.csv
+2026-09-05 19:49:41,101 [INFO]   [VALIDATED] outputs\sip_continuity.csv
+2026-09-05 19:49:41,102 [INFO]   [VALIDATED] outputs\sector_hhi.csv
+2026-09-05 19:49:41,102 [INFO]   [VALIDATED] reports\Final_Report.pdf
+2026-09-05 19:49:41,102 [INFO]   [VALIDATED] reports\Bluestock_MF_Presentation.pptx
+2026-09-05 19:49:41,102 [INFO]   [VALIDATED] README.md
+2026-09-05 19:49:41,102 [INFO]   [VALIDATED] data_dictionary.md
+2026-09-05 19:49:41,102 [INFO] ======================================================================
+2026-09-05 19:49:41,103 [INFO] SUCCESS: ALL PIPELINE STAGES COMPLETED IN 41.05 SECONDS!
+2026-09-05 19:49:41,103 [INFO] The Bluestock Mutual Fund Analytics project is submission-ready!
+2026-09-05 19:49:41,103 [INFO] ======================================================================
+2026-09-05 19:56:05,230 [INFO] ======================================================================
+2026-09-05 19:56:05,231 [INFO] BLUESTOCK MUTUAL FUND ANALYTICS — MASTER PIPELINE EXECUTION
+2026-09-05 19:56:05,231 [INFO] ======================================================================
+2026-09-05 19:56:05,231 [INFO] [STEP 1/9] Validating project directories...
+2026-09-05 19:56:05,232 [INFO]   [OK] Verified directory: data/raw
+2026-09-05 19:56:05,232 [INFO]   [OK] Verified directory: data/processed
+2026-09-05 19:56:05,233 [INFO]   [OK] Verified directory: db
+2026-09-05 19:56:05,233 [INFO]   [OK] Verified directory: notebooks
+2026-09-05 19:56:05,234 [INFO]   [OK] Verified directory: scripts
+2026-09-05 19:56:05,234 [INFO]   [OK] Verified directory: sql
+2026-09-05 19:56:05,235 [INFO]   [OK] Verified directory: dashboard
+2026-09-05 19:56:05,235 [INFO]   [OK] Verified directory: reports
+2026-09-05 19:56:05,235 [INFO]   [OK] Verified directory: charts
+2026-09-05 19:56:05,236 [INFO]   [OK] Verified directory: outputs
+2026-09-05 19:56:05,237 [INFO]   [OK] Verified directory: logs
+2026-09-05 19:56:05,238 [INFO]   [OK] Verified directory: tests
+2026-09-05 19:56:05,239 [INFO] 
+[STEP 2/9] Executing Live NAV API Ingestion (scripts/live_nav_fetch.py)...
+2026-09-05 19:56:11,139 [INFO]   [OK] Live NAV Fetch completed. Processed 5 schemes.
+2026-09-05 19:56:11,140 [INFO] 
+[STEP 3/9] Executing Master ETL & Star Schema Database Loading (scripts/etl_pipeline.py)...
+2026-09-05 19:56:14,110 [INFO]   [OK] ETL Pipeline & Database loading complete.
+2026-09-05 19:56:14,110 [INFO] 
+[STEP 4/9] Calculating Performance Metrics, Ratios & Fund Scorecard (scripts/compute_metrics.py)...
+2026-09-05 19:56:14,269 [INFO]   [OK] Performance metrics & Fund Scorecard generated.
+2026-09-05 19:56:14,269 [INFO] 
+[STEP 5/9] Executing Advanced Analytics (VaR, CVaR, Cohort, SIP Continuity, HHI) (scripts/advanced_analytics.py)...
+2026-09-05 19:56:15,711 [INFO]   [OK] Advanced Analytics reports generated.
+2026-09-05 19:56:15,711 [INFO] 
+[STEP 6/9] Testing Transparent Recommendation Model (scripts/recommender.py)...
+2026-09-05 19:56:15,722 [INFO]   [OK] Recommender model operational. Top match: HDFC Top 100 Fund - Regular Plan - Growth
+2026-09-05 19:56:15,723 [INFO] 
+[STEP 7/9] Generating 15+ EDA, Performance & Risk Charts (scripts/generate_charts.py)...
+2026-09-05 19:56:23,248 [INFO]   [OK] All 16 visualization charts generated into charts/
+2026-09-05 19:56:23,248 [INFO] 
+[STEP 8/9] Generating PDF Final Report & PowerPoint Deck (scripts/generate_report.py & generate_presentation.py)...
+2026-09-05 19:56:23,936 [INFO]   [OK] 24-section Final Report PDF generated at reports/Final_Report.pdf
+2026-09-05 19:56:24,142 [INFO]   [OK] 12-slide Presentation PPTX generated at reports/Bluestock_MF_Presentation.pptx
+2026-09-05 19:56:24,142 [INFO] 
+[STEP 9/9] Executing Final Deliverables Validation...
+2026-09-05 19:56:24,142 [INFO]   [VALIDATED] data\processed\01_fund_master.csv
+2026-09-05 19:56:24,143 [INFO]   [VALIDATED] db\bluestock_mf.db
+2026-09-05 19:56:24,143 [INFO]   [VALIDATED] sql\schema.sql
+2026-09-05 19:56:24,143 [INFO]   [VALIDATED] sql\queries.sql
+2026-09-05 19:56:24,144 [INFO]   [VALIDATED] outputs\fund_scorecard.csv
+2026-09-05 19:56:24,144 [INFO]   [VALIDATED] outputs\alpha_beta.csv
+2026-09-05 19:56:24,144 [INFO]   [VALIDATED] outputs\var_cvar_report.csv
+2026-09-05 19:56:24,144 [INFO]   [VALIDATED] outputs\cohort_analysis.csv
+2026-09-05 19:56:24,145 [INFO]   [VALIDATED] outputs\sip_continuity.csv
+2026-09-05 19:56:24,145 [INFO]   [VALIDATED] outputs\sector_hhi.csv
+2026-09-05 19:56:24,145 [INFO]   [VALIDATED] reports\Final_Report.pdf
+2026-09-05 19:56:24,145 [INFO]   [VALIDATED] reports\Bluestock_MF_Presentation.pptx
+2026-09-05 19:56:24,146 [INFO]   [VALIDATED] README.md
+2026-09-05 19:56:24,146 [INFO]   [VALIDATED] data_dictionary.md
+2026-09-05 19:56:24,146 [INFO] ======================================================================
+2026-09-05 19:56:24,146 [INFO] SUCCESS: ALL PIPELINE STAGES COMPLETED IN 18.92 SECONDS!
+2026-09-05 19:56:24,146 [INFO] The Bluestock Mutual Fund Analytics project is submission-ready!
+2026-09-05 19:56:24,147 [INFO] ======================================================================
